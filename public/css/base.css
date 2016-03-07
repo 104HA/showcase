@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'Novecentosanswide';
+	src: url('assets/Novecentosanswide.woff');
+}
+@font-face {
+	font-family: 'Novecentosanswide-Bold';
+	src: url('assets/Novecentosanswide-Bold.woff');
+}
+
+body {
+	font-family: Roboto, '微軟正黑體';
+	font-size: 14px;
+	line-height: 1.5;
+	vertical-align: middle;
+	overflow: auto;
+	background-color: #ECECEC;
+	margin: 0px;
+}
+
+*::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	box-shadow: none; 
+	background-color: #FFF;
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	background: #999;
+	box-shadow: none;
+	border: 1px solid #FFF;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: #888;
+}
+
+h1, h2, h3, h4 {
+	font-family: Novecentosanswide-Bold, Raleway, '微軟正黑體';
+}

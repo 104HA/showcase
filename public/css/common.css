@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+.header {
+	position: fixed;
+	width: 100%;
+	min-width: 780px;
+	padding: 8px 10px 4px 10px;
+	background: #555;
+	border-bottom: 2px solid #000;
+	color: #CCC;
+	line-height: 30px;
+}
+
+.header .ehrms {
+	font-family: Raleway, '微軟正黑體';
+	font-size: 26px;
+	font-weight: bold;
+	padding-left: 20px;
+	background-image: url(/css/assets/logo.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.header .module {
+	color: #FFF;
+	font-size: 22px;
+}
+
+.header .menu {
+	float: right;
+	margin-right: 10px;
+	color: #999;
+}
+
+.header .menu a {
+	font-family: Novecentosanswide, Raleway, '微軟正黑體';
+	padding: 0 15px;
+}
+
+.body {
+	padding-top: 50px;
+	min-height: 500px;
+	min-width: 780px;
+}
+
+.footer {
+	font-size: 12px;
+	text-align: center;
+}

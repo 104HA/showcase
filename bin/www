@@ -1,0 +1,74 @@
+#!/usr/bin/env node
+
+'use strict'
+
+var sys = require('../package.json').sys;
+var fs = require('fs');
+
+
+// 初始化系統等級的global資訊，並存於變數 "global.$p" 中 ...
+global.$p = {};		// production info!
+global.$p.name = sys.name;
+global.$p.env = sys.env === 'production' ? 'production' : 'development';
+global.$p.isDevMode = function(){ return global.$p.env === 'development'; }
+global.$p.isProMode = function(){ return global.$p.env === 'production'; }
+
+
+// 使用log4js建立log機制 (產生兩個logger於global.$p中: logger, errLogger)
+var logDirectory = sys.logDirectory || (__dirname + '/../log');
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+var appenders = global.$p.isDevMode() ? [ { type: 'console' }] : [
+		{
+			type: 'dateFile',
+			filename: logDirectory + '/' + global.$p.name + '-all',
+			pattern: '.yyyy-MM-dd',
+			//maxLogSize: 10485760, // for type: 'file'
+			alwaysIncludePattern: true,
+			catagory: 'all'
+		}, {
+			type: 'dateFile',
+			filename: logDirectory + '/' + global.$p.name + '-error',
+			pattern: '.yyyy-MM-dd',
+			alwaysIncludePattern: true,
+			category: 'error'
+		}
+	];
+var log4js = require('log4js');
+log4js.configure({ appenders: appenders });
+var logger = global.$p.logger = log4js.getLogger('all');
+var errLogger = global.$p.errLogger = global.$p.isDevMode() ? logger : log4js.getLogger('error');
+logger.info('[' + global.$p.name + '] 準備用 "' + global.$p.env + '" 模式啟動 ...');
+
+
+// 建立eHRMs 2.0 Showcase應用程式
+var app = require('../app');
+
+// http server ...
+if(sys.http){
+	var server = require('http').createServer(app);
+	var port = sys.http.port || 80;
+	server.listen(port, function(){
+		logger.info('[HTTP server] 建立完成 (port: ' + port + ')');
+	});
+	server.on('error', function(err){
+		errLogger.error('[' + global.$p.name + ':HTTP server]' + err.stack);
+	});
+}
+
+// https server (SSL) ...
+if(sys.https){
+	logger.warn('[TODO] !!! HTTPS server尚未實作，之後必須補齊 !!! ... (by mllee)');
+
+	/* TODO
+	var privateKey  = fs.readFileSync(sys.https.keyFile, 'utf8') || '';
+	var certificate = fs.readFileSync(sys.https.certFile, 'utf8') || '';
+	var credentials = {key: privateKey, cert: certificate};
+	var httpsServer = require('https').createServer(credentials, app);
+	var port = sys.http.port || 443;
+	httpsServer.listen(port, function(){
+		logger.info('[' + global.$p.name + ':HTTPS server] listening on port: ' + port);
+	});
+	httpsServer.on('error', function(err){
+		errLogger.error('[' + global.$p.name + ':HTTPS server]' + err.stack);
+	});*/
+}

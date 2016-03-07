@@ -1,0 +1,83 @@
+<style>
+	#container {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-60%);
+		left: 0;
+		right: 0;
+	}
+
+	#container:after {
+		content: '';
+		background-color: rgba(255, 255, 255, .4);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 1;
+	}
+
+	.content {
+		padding: 40px 0px;
+		position: relative;
+		margin: auto;
+		z-index: 2;
+		width: 70%;
+		max-width: 1280px;
+		min-width: 720px;
+		text-align: center;
+		color: #444;
+	}
+
+	.content h1 {
+		margin-bottom: 50px;
+	}
+
+	.ehrms {
+		color: #000;
+		font-family: Raleway, '微軟正黑體';
+		font-size: 40px;
+		font-weight: bold;
+		padding-left: 25px;
+		background-image: url(/css/assets/logo.png);
+		background-repeat: no-repeat;
+		background-position: left center;
+	}
+
+	.split {
+		border-right: 1px dotted rgba(0, 0, 0, .3);
+		height: 120px;
+	}
+</style>
+
+
+<div id="container">
+	<div class="content">
+		welcome to
+		<h1><span class="ehrms">eHRMS 2.0</span> <small>SHOWCASE</small></h1>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 col-xs-3 split">
+					<h4>SHOWCASE</h4>
+					<a href="showcase/case1">Case 1</a><br>
+					more case ...
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-3 split">
+					<h4>REFERENCE</h4>
+					<a href="reference">Reference</a>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-3 split">
+					<h4>TUTORIAL</h4>
+					coming soon ...
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-3">
+					<h4>ENTER</h4>
+					<a href="#">Login</a> |
+					<a href="#">Register</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

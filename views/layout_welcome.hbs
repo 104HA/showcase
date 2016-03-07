@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{> common/html_head}}
+		<style>
+			#body {
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				position: absolute;
+				min-width: 760px;
+				min-height: 300px;
+
+				background-position: 50% top;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-image: url(/css/assets/bg.jpg);
+			}
+
+			.footer{
+				bottom: 0;
+				left: 0;
+				right: 0;
+				position: absolute;
+				min-width: 800px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="body">
+			{{{body}}}
+			<div class="footer">{{> common/footer}}</div>
+		</div>
+	</body>
+</html>
