@@ -21,10 +21,12 @@
 	"sys": {
 		"name": "eHRMS2.0-Showcase",
 		"env": "development",
-		"logDirectory": "/Users/HuiYi/temp/log",
-		"accessLogDirectory": "/Users/HuiYi/temp/log",
+		"logDirectory": "c:/temp/log",
+		"accessLogDirectory": "c:/temp/log",
+/*		"logDirectory": "/Users/HuiYi/temp/log",
+		"accessLogDirectory": "/Users/HuiYi/temp/log",*/
 		"http": {
-			"port": 8080
+			"port": 80
 		},
 		"https": {
 			"port": 443,
